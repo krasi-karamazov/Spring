@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hockeyCoach" class="com.springdemo.coaches.HockeyCoach"/>
+    <bean id="cricketCoach" class="com.springdemo.coaches.CricketCoach">
+        <property name="fortuneService" ref="goodDayFortune"/>
+    </bean>
+    <bean id="logger" class="com.springdemo.LoggerConfig" init-method="initLogger">
+        <property name="printedLoggerConfig" value="FINE"/>
+        <property name="rootLoggerConfig" value="FINE"/>
+    </bean>
+    <bean id="fitnessCoach" class="com.springdemo.coaches.FitnessCoach"/>
+
+    <bean id="baseballCoach" class="com.springdemo.coaches.BaseballCoach">
+        <constructor-arg ref="goodDayFortune"/>
+    </bean>
+    <bean id="goodDayFortune" class="com.springdemo.fortuneservices.GoodDayFortuneService"/>
+</beans>
